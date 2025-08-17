@@ -1,0 +1,2 @@
+add_executable(6_texture main.cpp)
+target_link_fct_libraries(6_texture)

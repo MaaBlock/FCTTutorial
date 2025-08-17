@@ -1,0 +1,2 @@
+add_executable(5_pixel_shader 5_pixel_shader.cpp)
+target_link_fct_libraries(5_pixel_shader)
