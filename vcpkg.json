@@ -1,0 +1,43 @@
+{
+  "name": "fct-template-project",
+  "version": "0.1.0",
+  "dependencies": [
+    "assimp",
+    "boost",
+    {
+      "name": "freeimage",
+      "platform": "linux"
+    },
+    {
+      "name": "freeimage",
+      "platform": "windows"
+    },
+    "freetype",
+    {
+      "name": "glfw3",
+      "platform": "linux"
+    },
+    {
+      "name": "glfw3",
+      "platform": "windows"
+    },
+    {
+      "name": "physx",
+      "platform": "linux"
+    },
+    {
+      "name": "physx",
+      "platform": "windows"
+    },
+    "shaderc",
+    "spirv-cross",
+    {
+      "name": "vulkan",
+      "platform": "linux"
+    },
+    {
+      "name": "vulkan",
+      "platform": "windows"
+    }
+  ]
+}

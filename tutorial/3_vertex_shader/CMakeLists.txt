@@ -1,0 +1,2 @@
+add_executable(3_vertex_shader main.cpp)
+target_link_fct_libraries(3_vertex_shader)

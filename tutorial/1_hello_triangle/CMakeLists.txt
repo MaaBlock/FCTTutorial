@@ -1,0 +1,3 @@
+
+add_executable(1_hello_triangle main.cpp)
+target_link_fct_libraries(1_hello_triangle)

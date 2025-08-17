@@ -1,0 +1,6 @@
+add_executable(4_uniform_1 4_uniform_1.cpp)
+target_link_fct_libraries(4_uniform_1)
+add_executable(4_uniform_2 4_uniform_2.cpp)
+target_link_fct_libraries(4_uniform_2)
+add_executable(4_uniform_3 4_uniform_3.cpp)
+target_link_fct_libraries(4_uniform_3)

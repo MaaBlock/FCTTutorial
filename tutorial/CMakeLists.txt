@@ -1,0 +1,4 @@
+add_subdirectory(1_hello_triangle)
+add_subdirectory(2_index)
+add_subdirectory(3_vertex_shader)
+add_subdirectory(4_uniform)
