@@ -30,29 +30,29 @@ int main()
 
     // 添加4个顶点组成矩形
     mesh.addVertex(
-        Vec4(1,0,0,1), // 红色 - 左上角
+        Vec4(1,0,0,1), // 红色 - 左下角
         Vec2(-0.5f,-0.5f)
     );
     mesh.addVertex(
-        Vec4(0,1,0,1), // 绿色 - 右上角
+        Vec4(0,1,0,1), // 绿色 - 右下角
         Vec2(0.5f,-0.5f)
     );
     mesh.addVertex(
-        Vec4(0,0,1,1), // 蓝色 - 右下角
+        Vec4(0,0,1,1), // 蓝色 - 右上角
         Vec2(0.5f,0.5f)
     );
     mesh.addVertex(
-        Vec4(1,1,0,1), // 黄色 - 左下角
+        Vec4(1,1,0,1), // 黄色 - 左上角
         Vec2(-0.5f,0.5f)
     );
 
     // 添加索引组成两个三角形
-    // 第一个三角形: 左上 -> 右上 -> 右下
+    // 第一个三角形: 左下 -> 右下 -> 右上
     mesh.addIndex(0);
     mesh.addIndex(1);
     mesh.addIndex(2);
 
-    // 第二个三角形: 左上 -> 右下 -> 左下
+    // 第二个三角形: 左下 -> 右上 -> 左上
     mesh.addIndex(0);
     mesh.addIndex(2);
     mesh.addIndex(3);

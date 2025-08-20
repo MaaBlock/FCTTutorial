@@ -35,7 +35,7 @@ ShaderOut main(ShaderIn sIn) {
     ShaderOut sOut;
     float brightness = 1.0f + 0.5f * sin(time * 2.0f);
     sOut.color = sIn.color * brightness;
-    sOut.pos = mul(mvp, sIn.pos);
+    sOut.pos = mvp * sIn.pos;
     return sOut;
 }
 )");
@@ -52,29 +52,29 @@ ShaderOut main(ShaderIn sIn) {
 
     // 添加4个顶点组成矩形
     mesh.addVertex(
-        Vec4(1,0,0,1), // 红色 - 左上角
+        Vec4(1,0,0,1), // 红色 - 左下角
         Vec4(-0.5f,-0.5f,0.0f,1.0f)
     );
     mesh.addVertex(
-        Vec4(0,1,0,1), // 绿色 - 右上角
+        Vec4(0,1,0,1), // 绿色 - 右下角
         Vec4(0.5f,-0.5f,0.0f,1.0f)
     );
     mesh.addVertex(
-        Vec4(0,0,1,1), // 蓝色 - 右下角
+        Vec4(0,0,1,1), // 蓝色 - 右上角
         Vec4(0.5f,0.5f,0.0f,1.0f)
     );
     mesh.addVertex(
-        Vec4(1,1,0,1), // 黄色 - 左下角
+        Vec4(1,1,0,1), // 黄色 - 左上角
         Vec4(-0.5f,0.5f,0.0f,1.0f)
     );
 
     // 添加索引组成两个三角形
-    // 第一个三角形: 左上 -> 右上 -> 右下
+    // 第一个三角形: 左下 -> 右下 -> 右上
     mesh.addIndex(0);
     mesh.addIndex(1);
     mesh.addIndex(2);
 
-    // 第二个三角形: 左上 -> 右下 -> 左下
+    // 第二个三角形: 左下 -> 右上 -> 左上
     mesh.addIndex(0);
     mesh.addIndex(2);
     mesh.addIndex(3);
@@ -110,7 +110,7 @@ ShaderOut main(ShaderIn sIn) {
         auto currentTime = std::chrono::high_resolution_clock::now();
         float elapsed = std::chrono::duration<float>(currentTime - startTime).count();
         // 创建透视投影矩阵
-        float fov = 45.0f * 3.14159f / 180.0f; // 45度视野角
+        float fov = 90; // 45度视野角
         float aspect = 800.0f / 600.0f; // 窗口宽高比
         float nearPlane = 0.1f;
         float farPlane = 100.0f;
@@ -130,7 +130,7 @@ ShaderOut main(ShaderIn sIn) {
         Mat4 model;
         model.rotateZ(elapsed * 22.5f); // 绕Z轴旋转
 
-        Mat4 mvp = model * view * projection;
+        Mat4 mvp = projection * view *  model;
 
         uniform0.setValue("time", elapsed);
         uniform0.setValue("mvp", mvp);

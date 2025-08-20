@@ -19,6 +19,14 @@ int main()
     VertexLayout vertexLayout {
         VertexElement{VtxType::Color4f},
         VertexElement{VtxType::Position3f}
+        //fct只有3维矩阵和4维矩阵，为了使用3维矩阵进行旋转变换，我们使用3维坐标
+        /**
+         *3维矩阵通常用来进行2维变换
+         *4维矩阵通常用来进行3维变换
+         *3维矩阵只能对3维坐标进行旋转等操作，无法进行平移和透视变换等，
+         *为了进行平移变换，通常2维采用3维坐标使用3维 矩阵，3维使用4维 坐标，采用4维矩阵
+         *可以自行了解齐次坐标
+         **/
     };
     Layout layout {
         ctx,
@@ -45,29 +53,29 @@ ShaderOut main(ShaderIn sIn) {
 
     // 添加4个顶点组成矩形
     mesh.addVertex(
-        Vec4(1,0,0,1), // 红色 - 左上角
-        Vec3(-0.5f,-0.5f)
+        Vec4(1,0,0,1), // 红色 - 左下角
+        Vec3(-0.5f,-0.5f) //不填z坐标会采用默认值0
     );
     mesh.addVertex(
-        Vec4(0,1,0,1), // 绿色 - 右上角
+        Vec4(0,1,0,1), // 绿色 - 右下角
         Vec3(0.5f,-0.5f)
     );
     mesh.addVertex(
-        Vec4(0,0,1,1), // 蓝色 - 右下角
+        Vec4(0,0,1,1), // 蓝色 - 右上角
         Vec3(0.5f,0.5f)
     );
     mesh.addVertex(
-        Vec4(1,1,0,1), // 黄色 - 左下角
+        Vec4(1,1,0,1), // 黄色 - 左上角
         Vec3(-0.5f,0.5f)
     );
 
     // 添加索引组成两个三角形
-    // 第一个三角形: 左上 -> 右上 -> 右下
+    // 第一个三角形: 左下 -> 右下 -> 右上
     mesh.addIndex(0);
     mesh.addIndex(1);
     mesh.addIndex(2);
 
-    // 第二个三角形: 左上 -> 右下 -> 左下
+    // 第二个三角形: 左下 -> 右上 -> 左上
     mesh.addIndex(0);
     mesh.addIndex(2);
     mesh.addIndex(3);

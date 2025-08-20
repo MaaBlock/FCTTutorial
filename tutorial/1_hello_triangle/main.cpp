@@ -29,15 +29,15 @@ int main()
     DynamicMesh<uint32_t> mesh(ctx,vertexLayout);
     mesh.addVertex(
         Vec4(1,0,0,1), //对应第一个顶点属性, 颜色
-        Vec2(0.0f,-0.5f) //对应第二个顶点属性， 坐标 坐标系采用的是vulkan的坐标系
+        Vec2(0.0f,0.5f) //对应第二个顶点属性， 坐标
     );
     mesh.addVertex(
         Vec4(0,1,0,1),
-        Vec2(-0.5f,0.5f)
+        Vec2(-0.5f,-0.5f)
     );
     mesh.addVertex(
         Vec4(0,0,1,1),
-        Vec2(0.5f,0.5f)
+        Vec2(0.5f,-0.5f)
     );
     mesh.create();
 
