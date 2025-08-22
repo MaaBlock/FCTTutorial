@@ -25,7 +25,7 @@ int main()
         vertexLayout,
         PassName("base") //Render Graph必须已经执行了 compile
     };
-    auto vertexShader = layout.allocateVertexShader(R"(
+    auto vertexShader = layout.cacheVertexShader(R"(
 ShaderOut main(ShaderIn sIn) {
     ShaderOut sOut;
     sOut.color = sIn.color * 1.1f; //试着改一下这个1.1

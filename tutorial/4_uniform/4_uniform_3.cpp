@@ -30,7 +30,7 @@ int main()
             UniformVar(UniformType::Mat4,"mvp")
         )
     };
-    auto vertexShader = layout.allocateVertexShader(R"(
+    auto vertexShader = layout.cacheVertexShader(R"(
 ShaderOut main(ShaderIn sIn) {
     ShaderOut sOut;
     float brightness = 1.0f + 0.5f * sin(time * 2.0f);
